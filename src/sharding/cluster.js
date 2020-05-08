@@ -102,6 +102,8 @@ class Cluster {
                         let user = this.bot.users.get(id);
                         if (user) {
                             process.send({ name: "fetchReturn", value: user });
+                        } else {
+                            process.send({ name: "fetchReturn", value: 'invalid id' });
                         }
 
                         break;
@@ -113,6 +115,8 @@ class Cluster {
                         if (channel) {
                             channel = channel.toJSON();
                             return process.send({ name: "fetchReturn", value: channel });
+                        } else {
+                            process.send({ name: "fetchReturn", value: 'invalid id' });
                         }
 
                         break;
@@ -124,6 +128,8 @@ class Cluster {
                         if (guild) {
                             guild = guild.toJSON();
                             process.send({ name: "fetchReturn", value: guild });
+                        } else {
+                            process.send({ name: "fetchReturn", value: 'invalid id' });
                         }
 
                         break;
@@ -140,7 +146,9 @@ class Cluster {
                             if (member) {
                                 member = member.toJSON();
                                 process.send({ name: "fetchReturn", value: member });
-                            }
+                            } else {
+                            process.send({ name: "fetchReturn", value: 'invalid id' });
+                        }
                         }
 
                         break;
