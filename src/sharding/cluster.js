@@ -129,7 +129,8 @@ class Cluster {
                             guild = guild.toJSON();
                             process.send({ name: "fetchReturn", value: guild });
                         } else {
-                            process.send({ name: "fetchReturn", value: 'invalid id' });
+                            var anan = {message: 'invalid guild'}
+                            process.send({ name: "fetchReturn", value: anan});
                         }
 
                         break;
