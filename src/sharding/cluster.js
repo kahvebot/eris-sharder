@@ -103,7 +103,10 @@ class Cluster {
                         if (user) {
                             process.send({ name: "fetchReturn", value: user });
                         } else {
-                            process.send({ name: "fetchReturn", value: 'invalid id' });
+                            process.send({ name: "fetchReturn", value: {
+                                id: id,
+                                isUnknown: true
+                            }});
                         }
 
                         break;
@@ -116,7 +119,10 @@ class Cluster {
                             channel = channel.toJSON();
                             return process.send({ name: "fetchReturn", value: channel });
                         } else {
-                            process.send({ name: "fetchReturn", value: 'invalid id' });
+                            process.send({ name: "fetchReturn", value: {
+                                id: id,
+                                isUnknown: true
+                            }});
                         }
 
                         break;
@@ -129,8 +135,10 @@ class Cluster {
                             guild = guild.toJSON();
                             process.send({ name: "fetchReturn", value: guild });
                         } else {
-                            var anan = {message: 'invalid guild'}
-                            process.send({ name: "fetchReturn", value: anan});
+                            process.send({ name: "fetchReturn", value: {
+                                id: id,
+                                isUnknown: true
+                            }});
                         }
 
                         break;
@@ -148,8 +156,16 @@ class Cluster {
                                 member = member.toJSON();
                                 process.send({ name: "fetchReturn", value: member });
                             } else {
-                            process.send({ name: "fetchReturn", value: 'invalid id' });
-                        }
+                                process.send({ name: "fetchReturn", value: {
+                                    memberID: id,
+                                    isUnknown: true
+                                }});
+                            }
+                         } else {
+                            process.send({ name: "fetchReturn", value: {
+                                guildID: id,
+                                isUnknown: true
+                            }});
                         }
 
                         break;
